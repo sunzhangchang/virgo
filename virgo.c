@@ -21,6 +21,9 @@
 #define NUM_DESKTOPS 4
 #define NUM_PINNED 8
 
+#define PIN_HOTKEY NUM_DESKTOPS * 2 + 2
+#define QUIT_HOTKEY NUM_DESKTOPS * 2 + 1
+
 typedef struct {
 	HWND *windows;
 	unsigned count;
@@ -373,9 +376,9 @@ void __main(void)
 		if (msg.wParam == NUM_DESKTOPS * 2) {
 			break;
 		}
-		if (msg.wParam == NUM_DESKTOPS * 2 + 1) {
+		if (msg.wParam == QUIT_HOTKEY) {
 			virgo_toggle_hotkeys(&v);
-		} else if (msg.wParam == NUM_DESKTOPS * 2 + 2) {
+		} else if (msg.wParam == PIN_HOTKEY) {
 			virgo_toggle_pin(&v, GetForegroundWindow());
 		} else if (msg.wParam % 2 == 0) {
 			virgo_go_to_desk(&v, msg.wParam / 2);
