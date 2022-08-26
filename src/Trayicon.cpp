@@ -18,7 +18,7 @@ namespace virgo {
 
     void Trayicon::init() {
         HDC hdc;
-        this->hwnd = CreateWindowA("STATIC", "virgo", 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL);
+        this->hwnd = CreateWindowA("STATIC", "virgo", 0, 0, 0, 0, 0, nullptr, nullptr, nullptr, nullptr);
         this->bitmapWidth = GetSystemMetrics(SM_CXSMICON);
         this->nid.cbSize = sizeof(this->nid);
         this->nid.hWnd = this->hwnd;

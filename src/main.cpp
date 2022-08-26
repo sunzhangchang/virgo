@@ -10,7 +10,7 @@ void __main(void) {
     virgo::Virgo v{};
     MSG msg;
     v.init();
-    while (GetMessage(&msg, NULL, 0, 0)) {
+    while (GetMessage(&msg, nullptr, 0, 0)) {
         if (msg.message != WM_HOTKEY) {
             continue;
         }
