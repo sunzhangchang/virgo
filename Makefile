@@ -8,7 +8,7 @@ OBJS := $(subst $(SRC_DIR), $(OUT_DIR), $(patsubst %.cpp, %.o, $(SRC_FILE)))
 
 PROJECT=$(notdir $(SRC_DIR))
 
-CFLAGS=-std=c++20 -pedantic -Wall -O3 -nostdlib -fno-builtin -fno-asynchronous-unwind-tables -fno-ident -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-pie
+CFLAGS=-std=c++2a -pedantic -Wall -O3 -nostdlib -fno-builtin -fno-asynchronous-unwind-tables -fno-ident -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-pie
 LIBS=-lgdi32 -luser32 -lshell32 -lkernel32
 LDFLAGS=-static -nostdlib -fno-builtin -s -Wl,-e,__main,-subsystem,windows $(LIBS)
 ARCH=32
