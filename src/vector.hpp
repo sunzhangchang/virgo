@@ -77,7 +77,12 @@ namespace virgo {
         }
 
         const_iterator find(const_iterator st, const T & val) const {
-            return this->find(st, val);
+            for (auto i = st - this->begin(); i < (int)this->len; ++ i) {
+                if (this->at(i) == val) {
+                    return this->begin() + i;
+                }
+            }
+            return this->end();
         }
 
         iterator find(const T & val) { return this->find(this->begin(), val); }
