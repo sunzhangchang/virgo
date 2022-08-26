@@ -138,7 +138,13 @@ namespace virgo {
         if ((!hwnd) || (!is_valid_window(hwnd))) {
             return;
         }
+        auto & curwindows = this->current_desk().windows;
+        auto pos = curwindows.find(hwnd) - curwindows.begin();
         this->current_desk().erase(hwnd);
+        if (!curwindows.empty()) {
+            SetForegroundWindow(curwindows[pos]);
+            this->current_desk().set_focus_fore();
+        }
         this->desk(i).push(hwnd);
         ShowWindow(hwnd, SW_HIDE);
         this->desk(i).set_focus(hwnd);
