@@ -1,13 +1,17 @@
 virgo
 =====
+
+[原版](https://github.com/papplampe/virgo)已多年没有维护，此版本为C++版
+
 Virtual Desktop Manager for Windows
 
-[Download here](https://github.com/papplampe/virgo/releases/download/v.1.4.2/virgo.zip)
+[原版下载](https://github.com/papplampe/virgo/releases/download/v.1.4.2/virgo.zip)
 
 Features:
-- resource friendly, exe is <10kb on disk and uses <1mb memory while running
+- resource friendly, exe is <15kb on disk and uses <1mb memory while running
 - 4 virtual desktops (more if you change a constant and recompile the code)
 - shows only a tray icon with the number of the desktop you are on
+- you can pin the window that makes it shows on every window
 
 Hotkeys:
 
