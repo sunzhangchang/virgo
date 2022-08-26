@@ -1,2 +1,2 @@
 PROJECT=virgo
-SRCS+=virgo.cpp
+SRCS+=virgo.cpp Windows.cpp

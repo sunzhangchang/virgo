@@ -1,11 +1,10 @@
-#pragma once
+_Pragma("once")
 
 #include "mem.hpp"
 #include "util.hpp"
 
 namespace virgo {
 
-#ifndef STD
     template<class T>
     class vector {
     private:
@@ -77,17 +76,22 @@ namespace virgo {
             return st;
         }
 
+        const_iterator find(const_iterator st, const T & val) const {
+            return this->find(st, val);
+        }
+
         iterator find(const T & val) { return this->find(this->begin(), val); }
+        const_iterator find(const T & val) const { return this->find(this->begin(), val); }
 
-        inline bool empty() const { return this->len == 0; }
-        inline unsigned size() const { return this->len; }
-        inline unsigned capacity() const { return this->cap; }
+        bool empty() const { return this->len == 0; }
+        unsigned size() const { return this->len; }
+        unsigned capacity() const { return this->cap; }
 
-        inline T & at(unsigned i) & { assert(i < this->len); return this->v[i]; }
-        inline const T & at(unsigned i) const & { assert(i < this->len); return this->v[i]; }
+        T & at(unsigned i) & { assert(i < this->len); return this->v[i]; }
+        const T & at(unsigned i) const & { assert(i < this->len); return this->v[i]; }
 
-        inline T & operator[](unsigned i) & { return this->at(i); }
-        inline const T & operator[](unsigned i) const & { return this->at(i); }
+        T & operator[](unsigned i) & { return this->at(i); }
+        const T & operator[](unsigned i) const & { return this->at(i); }
 
         Self & operator=(const Self & other) & {
             if (this->v != nullptr) {
@@ -104,7 +108,7 @@ namespace virgo {
             return *this;
         }
 
-        inline void resize(unsigned n) {
+        void resize(unsigned n) {
             if (n > this->len) {
                 if (n > this->cap) {
                     unsigned new_cap = this->cap + (this->cap == 0);
@@ -117,25 +121,24 @@ namespace virgo {
             this->len = n;
         }
 
-        inline void clear() { this->len = 0; }
+        void clear() { this->len = 0; }
 
-        inline void shrink_to_fit() {
+        void shrink_to_fit() {
             if (this->capacity() > this->size()) {
                 this->resize_cap(this->len);
             }
         }
 
         template<class F>
-        Self filter(F && func) {
+        Self filter(F && func) const {
             auto t = *this;
             t.resize(copy_if(t.begin(), t.end(), t.begin(), func) - t.begin());
             t.shrink_to_fit();
             return t;
         }
-    };
 
-#else
-#include <vector>
-using std::vector;
-#endif
+        bool has(const T & val) const {
+            return this->find(val) != this->end();
+        }
+    };
 }
